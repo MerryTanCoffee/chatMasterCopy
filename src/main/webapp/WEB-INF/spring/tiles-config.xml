@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+	<definition name = "loginTemplate" template="/WEB-INF/views/loginTemplate.jsp">
+	</definition>
+	
+	<!-- 결과로 리턴되는 페이지 -->
+	<definition name = "module/*" extends="loginTemplate">
+		<put-attribute name="content" value = "/WEB-INF/views/module/{1}.jsp"/>
+	</definition>
+	
+	
+</tiles-definitions>	

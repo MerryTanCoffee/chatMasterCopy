@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "kr.or.ddit.mapper.LoginMapper">
+
+	
+	<select id = "list" resultType="member">
+		select
+			MEM_NUM, MEM_ID, MEM_NAME, MEM_PW, MEM_EMAIL
+		from MEMBER
+		where 1=1
+		order by MEM_NUM desc	
+	</select>
+	
+
+	<select id = "idCheck" parameterType="string" resultType="member">
+		select
+			MEM_NUM, MEM_ID, MEM_NAME, MEM_PW, MEM_EMAIL
+		from MEMBER
+		where mem_id = #{memId}
+	</select>
+
+
+	<select id = "loginCheck" parameterType="member" resultType="member">
+		select
+			MEM_NUM, MEM_ID, MEM_NAME, MEM_PW, MEM_EMAIL
+			
+		from MEMBER
+		where mem_id = #{memId}
+		and mem_pw = #{memPw}
+	</select>
+	
+	<select id="login" resultType="member">
+ 		select * from MEMBER
+ 		where mem_id = #{memId}
+ 	</select>
+	
+	<insert id="signup" parameterType="member">
+		insert into MEMBER(
+			MEM_NUM, MEM_ID, MEM_NAME, MEM_PW, MEM_EMAIL
+		) values (
+			memnum_seq.nextval, #{memId}, #{memName}, #{memPw}, #{memEmail}
+		)
+		
+	</insert>
+
+</mapper>
